@@ -1,4 +1,5 @@
 import os
+from pathlib import PureWindowsPath
 from typing import List, Optional
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QFont, QFontMetrics
@@ -17,6 +18,17 @@ from app.config.theme import (
 )
 from app.core.recent_manager import load_recent_directories, remove_recent_directory
 from app.core.tooltip import attach_tooltip
+
+
+def _display_folder_name(path: str) -> str:
+    """Return the final folder name for Windows or POSIX paths."""
+    raw = str(path or "").strip()
+    if not raw:
+        return ""
+    if "\\" in raw:
+        return PureWindowsPath(raw.rstrip("\\/")).name
+    return raw.rstrip("/").rsplit("/", 1)[-1]
+
 
 class RecentBar(QWidget):
     """
@@ -117,7 +129,7 @@ class RecentBar(QWidget):
         MIN_THIRD_ITEM_W = 48  # Minimum width needed to display 3rd folder meaningfully
         BTN_PAD = 6            # Safety margin for button text rendering
 
-        names = [os.path.basename(p.rstrip("\\/")) or p for p in self._paths]
+        names = [_display_folder_name(p) or p for p in self._paths]
         req_widths = [fm.horizontalAdvance(n) + BTN_PAD for n in names]
 
         # Prioritize showing the first two names clearly.
