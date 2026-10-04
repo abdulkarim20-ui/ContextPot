@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 512 512" width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Back Folder Gradient (Amber / Yellow) -->
+    <linearGradient id="back_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe066"/>
+      <stop offset="100%" stop-color="#f59f00"/>
+    </linearGradient>
+
+    <!-- Middle Folder Gradient (Emerald / Green) -->
+    <linearGradient id="mid_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#69db7c"/>
+      <stop offset="100%" stop-color="#0ca678"/>
+    </linearGradient>
+
+    <!-- Front Folder Gradient (Electric Cyan / Royal Blue) -->
+    <linearGradient id="front_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#97e0ff"/>
+      <stop offset="100%" stop-color="#1075ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. BACK FOLDER (Yellow / Amber) -->
+  <g transform="translate(130, 40)">
+    <!-- Back tab & body -->
+    <path d="M 0 35 C 0 16 16 0 35 0 L 130 0 C 145 0 158 8 165 20 L 180 45 L 305 45 C 324 45 340 61 340 80 L 340 240 C 340 259 324 275 305 275 L 35 275 C 16 275 0 259 0 240 Z" fill="url(#back_grad)" />
+  </g>
+
+  <!-- 2. MIDDLE FOLDER (Green / Emerald) -->
+  <g transform="translate(75, 95)">
+    <!-- Middle tab & body -->
+    <path d="M 0 35 C 0 16 16 0 35 0 L 130 0 C 145 0 158 8 165 20 L 180 45 L 305 45 C 324 45 340 61 340 80 L 340 240 C 340 259 324 275 305 275 L 35 275 C 16 275 0 259 0 240 Z" fill="url(#mid_grad)" />
+  </g>
+
+  <!-- 3. FRONT FOLDER (Electric Cyan / Royal Blue) -->
+  <g transform="translate(20, 150)">
+    <!-- Front tab & body -->
+    <path d="M 0 35 C 0 16 16 0 35 0 L 130 0 C 145 0 158 8 165 20 L 180 45 L 305 45 C 324 45 340 61 340 80 L 340 240 C 340 259 324 275 305 275 L 35 275 C 16 275 0 259 0 240 Z" fill="url(#front_grad)" />
+    <!-- Front Details / Two Dots -->
+    <circle cx="255" cy="205" r="13" fill="#ffffff" opacity="0.9" />
+    <circle cx="295" cy="205" r="13" fill="#ffffff" opacity="0.9" />
+  </g>
+</svg>
