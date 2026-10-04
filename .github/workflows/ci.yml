@@ -42,7 +42,21 @@ jobs:
           python -m compileall app
 
       - name: Run pytest
+        shell: pwsh
         env:
           QT_QPA_PLATFORM: offscreen
         run: |
           python -m pytest -v
+          $pytestExit = $LASTEXITCODE
+
+          Write-Host "PYTEST_EXIT_CODE=$pytestExit"
+
+          if ($pytestExit -ne 0) {
+            Write-Host "Pytest returned a non-zero exit code."
+            Write-Host "Python version:"
+            python --version
+            Write-Host "Pytest version:"
+            python -m pytest --version
+          }
+
+          exit $pytestExit
