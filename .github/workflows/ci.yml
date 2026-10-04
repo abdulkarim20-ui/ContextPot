@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
@@ -42,17 +42,7 @@ jobs:
           python -m compileall app
 
       - name: Run pytest
-        shell: python
         env:
           QT_QPA_PLATFORM: offscreen
         run: |
-          import subprocess
-          import sys
-
-          result = subprocess.run(
-              [sys.executable, "-m", "pytest", "-v"],
-              check=False,
-          )
-
-          print(f"pytest exit code: {result.returncode}")
-          sys.exit(result.returncode)
+          python -m pytest -v
