@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/logo.svg" alt="ContextPot Logo" width="96" height="96" />
+<img src="docs/logo.svg" alt="ContextPot Logo" width="80" height="80" />
 
 # ContextPot
 
@@ -41,11 +41,9 @@ When working with modern LLMs (Claude, ChatGPT, Gemini, DeepSeek) or conducting 
 - **Recent Projects Bar**: One-click re-access to previously loaded repositories with automatic path validation.
 
 <p align="center">
-  <img src="docs/01_home_screen.png" alt="Launcher Screen" width="680" />
-</p>
-
-<p align="center">
-  <img src="docs/02_loaded_folder.png" alt="Loaded Folder State" width="680" />
+  <img src="docs/01_home_screen.png" alt="Launcher Screen" width="340" />
+  &nbsp;&nbsp;
+  <img src="docs/02_loaded_folder.png" alt="Loaded Folder State" width="340" />
 </p>
 
 ---
@@ -57,7 +55,7 @@ When working with modern LLMs (Claude, ChatGPT, Gemini, DeepSeek) or conducting 
 - **Collapse & Expand All**: Single-click toolbar actions for fast navigation.
 
 <p align="center">
-  <img src="docs/03_explorer_tree.png" alt="Interactive Explorer Tree" width="680" />
+  <img src="docs/03_explorer_tree.png" alt="Interactive Explorer Tree" width="340" />
 </p>
 
 ---
@@ -76,7 +74,7 @@ When working with modern LLMs (Claude, ChatGPT, Gemini, DeepSeek) or conducting 
 - **Ignored Items Popup**: View, search, and restore excluded items with matching Material Theme icons directly from the toolbar.
 
 <p align="center">
-  <img src="docs/05_excluded_items_list.png" alt="Session Excluded Items Popup" width="680" />
+  <img src="docs/05_excluded_items_list.png" alt="Session Excluded Items Popup" width="260" />
 </p>
 
 ---
@@ -91,7 +89,7 @@ Export clean, structured Markdown files formatted specifically for Large Languag
 | **Selected Subtree** | `{Project}_selected_full.md` | **Scoped Context**: Export only selected files or subfolders from the right-click menu. |
 
 <p align="center">
-  <img src="docs/06_export_mode.png" alt="Export Mode Selector" width="680" />
+  <img src="docs/06_export_mode.png" alt="Export Mode Selector" width="214" />
 </p>
 
 - **Syntax-Highlighted Code Blocks**: Automatically infers code block language tags (`python`, `typescript`, `jsx`, `json`, `rust`, etc.).
@@ -198,7 +196,7 @@ The Settings view allows you to configure persistent ignore patterns and workflo
 - **Workflow Preferences**: Toggle auto-scan on drop, remember export directories, and reset defaults at any time.
 
 <p align="center">
-  <img src="docs/07_settings_ignore_patterns.png" alt="Settings & Ignore Patterns" width="680" />
+  <img src="docs/07_settings_ignore_patterns.png" alt="Settings & Ignore Patterns" width="340" />
 </p>
 
 ---
