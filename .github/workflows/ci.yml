@@ -42,7 +42,17 @@ jobs:
           python -m compileall app
 
       - name: Run pytest
+        shell: python
         env:
           QT_QPA_PLATFORM: offscreen
         run: |
-          pytest -v
+          import subprocess
+          import sys
+
+          result = subprocess.run(
+              [sys.executable, "-m", "pytest", "-v"],
+              check=False,
+          )
+
+          print(f"pytest exit code: {result.returncode}")
+          sys.exit(result.returncode)
