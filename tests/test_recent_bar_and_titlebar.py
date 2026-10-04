@@ -1,20 +1,7 @@
-import os
-import sys
-import pytest
-from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QApplication, QPushButton, QFrame, QLabel
+from PySide6.QtWidgets import QPushButton, QFrame, QLabel
 
 from app.widgets.recent_bar import RecentBar
 from app.widgets.title_bar import HeaderToolBar
-from app.config.theme import TITLEBAR_GRADIENT_START, TITLEBAR_GRADIENT_END
-
-@pytest.fixture(scope="session")
-def qapp():
-    os.environ["QT_QPA_PLATFORM"] = "offscreen"
-    app = QApplication.instance()
-    if app is None:
-        app = QApplication(sys.argv)
-    return app
 
 def test_recent_bar_empty(qapp):
     bar = RecentBar()
@@ -81,3 +68,8 @@ def test_titlebar_gradient_and_clean_toolbar(qapp):
     assert win.windowTitle() == "ContextPot"
     central_style = win.centralWidget().styleSheet()
     assert "qlineargradient" not in central_style
+
+    win.close()
+    win.deleteLater()
+    toolbar.close()
+    toolbar.deleteLater()

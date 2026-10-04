@@ -1,32 +1,43 @@
+"""Shared QApplication fixture and deterministic Qt widget teardown."""
+
 import gc
 import os
 import sys
 
 import pytest
 
+os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-@pytest.fixture(scope="session", autouse=True)
-def _qt_cleanup():
-    yield
-    try:
-        from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import QCoreApplication, QEvent
+from PySide6.QtWidgets import QApplication
 
-        app = QApplication.instance()
-        if app is not None:
-            app.closeAllWindows()
-            app.processEvents()
-    except Exception:
-        pass
+
+def _drain_qt(app):
+    """Close top-level widgets and flush Qt's deferred deletions."""
+    for widget in list(app.topLevelWidgets()):
+        try:
+            widget.close()
+            widget.deleteLater()
+        except RuntimeError:
+            pass
+
+    for _ in range(3):
+        app.processEvents()
+        QCoreApplication.sendPostedEvents(None, QEvent.DeferredDelete)
+
     gc.collect()
 
 
-def pytest_sessionfinish(session, exitstatus):
-    session.config._ci_exitstatus = int(exitstatus)
+@pytest.fixture(scope="session")
+def qapp():
+    app = QApplication.instance() or QApplication(sys.argv)
+    yield app
+    _drain_qt(app)
 
 
-def pytest_unconfigure(config):
-    if sys.platform == "win32" and os.environ.get("CI"):
-        status = getattr(config, "_ci_exitstatus", 0)
-        sys.stdout.flush()
-        sys.stderr.flush()
-        os._exit(status)
+@pytest.fixture(autouse=True)
+def _qt_cleanup_after_each_test():
+    yield
+    app = QApplication.instance()
+    if app is not None:
+        _drain_qt(app)

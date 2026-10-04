@@ -1,25 +1,11 @@
 import os
-import sys
 import tempfile
 import time
-import pytest
-from PySide6.QtCore import QCoreApplication
-from PySide6.QtWidgets import QApplication
 
 from app.core.scanner import scan_directory_structure, DirectoryScannerThread
 from app.core.watcher_manager import FileSystemWatcherManager
 from app.views.explorer.directory_tree import DirectoryTreeWidget
 from app.views.explorer.explorer_view import ExplorerView
-
-
-@pytest.fixture(scope="session")
-def qapp():
-    os.environ["QT_QPA_PLATFORM"] = "offscreen"
-    app = QApplication.instance()
-    if app is None:
-        app = QApplication(sys.argv)
-    return app
-
 
 def test_scanner_metadata_and_signature():
     with tempfile.TemporaryDirectory() as temp_dir:
@@ -312,4 +298,3 @@ def test_scanner_invalid_path_and_ignores():
         assert "src" in child_names
         assert ".git" not in child_names
         assert "User_Data" not in child_names
-

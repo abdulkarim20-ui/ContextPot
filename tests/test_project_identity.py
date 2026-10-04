@@ -1,19 +1,9 @@
 """
 Tests for Project Identity Detection and ProjectIdentityBadge UI widget.
 """
-import pytest
 from app.core.project_identity import detect_project_identity
 from app.widgets.project_identity_badge import ProjectIdentityBadge
 from app.widgets.drop_zone.loaded_folder_card import LoadedFolderCard
-from PySide6.QtWidgets import QApplication
-
-
-@pytest.fixture(scope="session")
-def qapp():
-    app = QApplication.instance()
-    if app is None:
-        app = QApplication([])
-    return app
 
 
 def test_detect_python_project():
