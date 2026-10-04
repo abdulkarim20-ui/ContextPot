@@ -8,8 +8,10 @@
 
 Turn any codebase into a clean, structured hierarchy — then export LLM-ready Markdown (`.md`) context with syntax-highlighted code blocks, visual tree diagrams, and automatic secret redaction.
 
+[![CI](https://github.com/abdulkarim20-ui/ContextPot/actions/workflows/ci.yml/badge.svg)](https://github.com/abdulkarim20-ui/ContextPot/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/abdulkarim20-ui/ContextPot?style=flat-square)](https://github.com/abdulkarim20-ui/ContextPot/releases)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078d4?style=flat-square&logo=windows)](https://microsoft.com/windows)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776ab?style=flat-square&logo=python)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776ab?style=flat-square&logo=python)](https://www.python.org/)
 [![UI Framework](https://img.shields.io/badge/UI-PySide6%20%28Qt%206%29-41cd52?style=flat-square&logo=qt)](https://www.qt.io/)
 [![Architecture](https://img.shields.io/badge/Architecture-100%25%20Local-16a34a?style=flat-square&logo=shield)](https://github.com/abdulkarim20-ui/ContextPot)
 [![License](https://img.shields.io/badge/License-Source--Available-f59e0b?style=flat-square)](LICENSE)
@@ -183,8 +185,11 @@ python main.py
 ### Run Tests
 
 ```bash
+pip install pytest
 pytest
 ```
+
+Tests run on Windows and Ubuntu with Python 3.10, 3.11 and 3.12 via GitHub Actions.
 
 ---
 
